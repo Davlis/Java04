@@ -3,7 +3,7 @@
  */
 import java.awt.*;
 
-class Triangle implements Comparable<Triangle>
+class Triangle extends Polygon implements Comparable<Triangle>
 {
 	private Point a;
 	private Point b;
@@ -112,14 +112,14 @@ class Triangle implements Comparable<Triangle>
 		return this.c;
 	}
 
-	public double getPenimeter()
+	public double countPenimeter()
 	{
 		return Point.NORMA(this.a, this.b) + Point.NORMA(this.b, this.c) + Point.NORMA(this.c, this.a);
 	}
 
-	public double getArea()
+	public double countArea()
 	{
-		double p = (0.5)*this.getPenimeter(); 	// half of penimeter
+		double p = (0.5)*this.countPenimeter(); 	// half of penimeter
 		double a = this.a.getLength(this.b);
 		double b = this.b.getLength(this.c);
 		double c = this.c.getLength(this.a);
@@ -135,7 +135,7 @@ class Triangle implements Comparable<Triangle>
 			 Perfect for enumerable type :)
 		*/
 		double floor = 0;
-		double area = this.getArea();
+		double area = this.countArea();
 		boolean status = true;
 		switch(whichVertic) {
 			case 1 :
@@ -169,8 +169,8 @@ class Triangle implements Comparable<Triangle>
 	public int compareTo(Triangle triangle)
 	{
 
-		double comparedTriangleArea = triangle.getArea();
-		double thisArea = this.getArea();
+		double comparedTriangleArea = triangle.countArea();
+		double thisArea = this.countArea();
 
 		if(comparedTriangleArea > thisArea)
 			return -1;

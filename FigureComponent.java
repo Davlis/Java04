@@ -22,25 +22,22 @@ public class FigureComponent extends JPanel {
 		try{
 			Triangle T1 = new Triangle(new Point(12,38), new Point(40, 12), new Point(78,30), Color.YELLOW);
 			Triangle T2 = new Triangle(new Point(0,0), new Point(100,100), new Point(200,100), Color.CYAN);
-			List<Triangle> listOfTriangles = new ArrayList<Triangle>();
-			listOfTriangles.add(T1);
-			listOfTriangles.add(T2);
-            ListIterator<Triangle> ListIteratorForTriangles = listOfTriangles.listIterator();
-            while(ListIteratorForTriangles.hasNext())
-            {
-            	ListIteratorForTriangles.next().drawFigure(g);
-            }
-            
-            
-    		Quadrangle Q1 = new Quadrangle(new Point(100,200), new Point(100,400), new Point(312,345), new Point(400,100), Color.RED);
+			Quadrangle Q1 = new Quadrangle(new Point(100,200), new Point(100,400), new Point(312,345), new Point(400,100), Color.RED);
 			Quadrangle Q2 = new Quadrangle(new Point(200,200), new Point(300,400), new Point(412,345), new Point(500,100), Color.GREEN);
-			List<Quadrangle> listOfQuadrangles = new ArrayList<Quadrangle>();
-			listOfQuadrangles.add(Q1);
-			listOfQuadrangles.add(Q2);
-			ListIterator<Quadrangle> ListIteratorForQuadrangles = listOfQuadrangles.listIterator();
-			while(ListIteratorForQuadrangles.hasNext()){
-				ListIteratorForQuadrangles.next().drawFigure(g);
-			}
+			List<Polygon> listOfPolygons = new ArrayList<Polygon>();
+			listOfPolygons.add(T1);
+			listOfPolygons.add(T2);
+			listOfPolygons.add(Q1);
+			listOfPolygons.add(Q2);
+            ListIterator<Polygon> ListIteratorForPolygons = listOfPolygons.listIterator();
+            while(ListIteratorForPolygons.hasNext())
+            {
+            	ListIteratorForPolygons.next().drawFigure(g);
+            }
+            Figure[] array;
+            array = new Figure[]{new Triangle(new Point(0,0), new Point(100, 200), new Point(400,400), Color.YELLOW)};
+    		for(Figure p: array)
+    			p.drawFigure(g);
             
 		} catch(Exception e){
 			System.out.println(e);

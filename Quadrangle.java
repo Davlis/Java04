@@ -3,7 +3,7 @@
  */
 
 import java.awt.*;
-class Quadrangle implements Comparable<Quadrangle>
+class Quadrangle extends Polygon implements Comparable<Quadrangle>
 {
 	private Point a;
 	private Point b;
@@ -141,7 +141,7 @@ class Quadrangle implements Comparable<Quadrangle>
 		return Math.max(Math.max(a,b), Math.max(c, d));
 	}
 
-	public double getPenimeter()
+	public double countPenimeter()
 	{
 		double a = this.a.getLength(this.b);
 		double b = this.b.getLength(this.d);
@@ -150,7 +150,7 @@ class Quadrangle implements Comparable<Quadrangle>
 		return a + b + c + d;
 	}
 
-	public double getArea()
+	public double countArea()
 	{
 		return Math.abs((a.getX()*b.getY() - a.getY()*b.getX()) + (b.getX()*c.getY() - b.getY()*c.getX()) + (c.getX()*d.getY() - c.getY()*d.getX()) + (d.getX()*a.getY() - d.getY()*a.getX()))/2.0; 
 	}
@@ -174,8 +174,8 @@ class Quadrangle implements Comparable<Quadrangle>
 	@Override
 	public int compareTo(Quadrangle quadrangle)
 	{
-		double comparedQuadrangleArea = quadrangle.getArea();
-		double thisArea = this.getArea();
+		double comparedQuadrangleArea = quadrangle.countArea();
+		double thisArea = this.countArea();
 
 		if(comparedQuadrangleArea > thisArea)
 			return -1;
